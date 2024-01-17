@@ -67,10 +67,6 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
     color: "inherit", // Inherits color from parent, can be overridden
   };
 
-  useEffect(() => {
-    // Call the API here
-  });
-
   return (
     <>
       {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location */}

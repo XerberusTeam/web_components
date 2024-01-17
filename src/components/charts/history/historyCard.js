@@ -19,10 +19,6 @@ const HistoryCard = ({ token, data, details, historyCardURL }) => {
     padding: "20px", // Adjust as needed
   };
 
-  useEffect(() => {
-    // Call the API here
-  });
-
   return (
     <>
     {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location. Do pass */}
