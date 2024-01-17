@@ -9,7 +9,7 @@ import ratingColor from "@/utils/ratingColor";
 import ThermometerGraph from "./thermometergraph";
 import Tagline from "@/components/tagline/tagline";
 
-const GrowthCard = ({ token, growth_score, growthPageURL }) => {
+const GrowthCard = ({ token, growth_score, growthCardURL }) => {
   // Card style with responsive width and padding adjustments
   const cardStyle = {
     backgroundColor: "white",
