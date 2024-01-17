@@ -62,9 +62,7 @@ const GrowthCard = ({ token, growth_score, growthCardURL }) => {
       >
         <div style={flexStyle}>
           <div style={boxStyle}>
-            <div style={{ marginBottom: "5px" }}>
-              <h3>Growth</h3>
-            </div>
+            
 
             <div>
               <div style={{ marginBottom: "20px" }}>
