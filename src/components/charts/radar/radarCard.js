@@ -95,11 +95,11 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
                   style={{
                     ...riskScoreStyle,
                     color: ratingColor(
-                      scoresData[`${riskType.toLowerCase()}_score`]
+                      scoresData[`${riskType.toLowerCase()}Score`]
                     ),
                   }}
                 >
-                  {scoresData[`${riskType.toLowerCase()}_score`]}
+                  {scoresData[`${riskType.toLowerCase()}Score`]}
                 </span>
               </div>
             ))}

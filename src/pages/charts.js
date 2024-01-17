@@ -3,12 +3,13 @@ import GrowthCard from "@/components/charts/growth_thermometer/growthCard";
 import HistoryCard from "@/components/charts/history/historyCard";
 import RadarCard from "@/components/charts/radar/radarCard";
 
-const Charts = () => {
+const Charts = ({token}) => {
+
   const sampleDataForRadarChart = {
     overallRiskScore: "AAA",
-    liquidity_score: "AA",
-    network_score: "A",
-    price_score: "AAA",
+    liquidityScore: "AA",
+    networkScore: "A",
+    priceScore: "AAA",
   };
 
   const sampleDataForHistoryChart = {
@@ -51,18 +52,21 @@ const Charts = () => {
 
   useEffect(() => {
     // call token info API
-  });
+    
+  },[token]);
+
   return (
     <>
       {/* Replace the following sample data with actual data from the API when integrating into your application */}
-      <GrowthCard token={"WMT"} growth_score={"Moderate"} />
+      <GrowthCard token={"WMT"} growth_score={'High'} growthCardURL={''}/>
       <br />
-      <RadarCard token={"WMT"} scoresData={sampleDataForRadarChart} />
+      <RadarCard token={"WMT"} scoresData={sampleDataForRadarChart} radarCardURL={''}/>
       <br />
       <HistoryCard
         token={"WMT"}
         data={sampleDataForHistoryChart.dataArray}
         details={sampleDataForHistoryChart.details}
+        historyCardURL={''}
       />
     </>
   );
