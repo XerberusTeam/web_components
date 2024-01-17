@@ -58,7 +58,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         {/* Replace the following sample data with actual data from the API when integrating into your application */}
-       <GrowthCard token={'WMT'} growth_score={'Moderate'} backgroundColor={'white'} border={'white'}/>
+       <GrowthCard token={'WMT'} growth_score={'Moderate'}/>
        <br/>
        <RadarCard token={'WMT'} scoresData={sampleDataForRadarChart}/>
        <br/>
