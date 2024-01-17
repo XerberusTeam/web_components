@@ -5,6 +5,7 @@ import RadarCard from "@/components/charts/radar/radarCard";
 
 const Charts = () => {
   const sampleDataForRadarChart = {
+    overallRiskScore: "AAA",
     liquidity_score: "AA",
     network_score: "A",
     price_score: "AAA",
@@ -59,6 +60,7 @@ const Charts = () => {
       <RadarCard token={"WMT"} scoresData={sampleDataForRadarChart} />
       <br />
       <HistoryCard
+        token={"WMT"}
         data={sampleDataForHistoryChart.dataArray}
         details={sampleDataForHistoryChart.details}
       />

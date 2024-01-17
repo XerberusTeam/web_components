@@ -22,7 +22,7 @@ const HistoryCard = ({ token, data, details, historyCardURL }) => {
   return (
     <>
     {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location. Do pass */}
-      <div style={cardStyle} onClick={() => (window.location.href = `${historyCardURL}/${token}`)}>
+      <div style={cardStyle} onClick={() => (window.location.href = `${historyCardURL}${token}`)}>
         <HistoryGraph data={data} details={details} ticks={8} />
       </div>
     </>

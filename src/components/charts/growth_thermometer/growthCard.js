@@ -58,7 +58,7 @@ const GrowthCard = ({ token, growth_score, growthCardURL }) => {
       {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location */}
       <div
         style={cardStyle}
-        onClick={() => (window.location.href = `${growthCardURL}/${token}`)}
+        onClick={() => (window.location.href = `${growthCardURL}${token}`)}
       >
         <div style={flexStyle}>
           <div style={boxStyle}>

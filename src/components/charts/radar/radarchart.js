@@ -6,6 +6,7 @@ Please modify its appearance and style as needed and incorporate it into your fr
 
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
+import ratingColor from "@/utils/ratingColor";
 
 const convertData = (data) => {
   const conversionRule = {
@@ -26,8 +27,8 @@ const convertData = (data) => {
 
 const RadarChart = ({rawData, labels, color}) => {
   const svgRef = useRef(null);
-  const radarColor = "#d3d3d3"; // Change as needed
-  const textColor = "white"; // Change as needed
+  const radarColor = color; // Change as needed
+  const textColor = "black"; // Change as needed
   
   const data = convertData(rawData);
 

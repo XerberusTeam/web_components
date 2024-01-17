@@ -70,7 +70,7 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
   return (
     <>
       {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location */}
-      <div style={cardStyle} onClick={() => (window.location.href = `${radarCardURL}/${token}`)}>
+      <div style={cardStyle} onClick={() => (window.location.href = `${radarCardURL}${token}`)}>
         <div style={contentStyle}>
           <div style={{ width: "40%" }}>
             <div style={riskStyle}>
@@ -79,10 +79,10 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
                 <span
                   style={{
                     ...scoreTextStyle,
-                    color: ratingColor(scoresData.risk_score),
+                    color: ratingColor(scoresData.overallRiskScore),
                   }}
                 >
-                  {scoresData.risk_score}
+                  {scoresData.overallRiskScore}
                 </span>
               </h3>
             </div>
@@ -113,7 +113,7 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
                 scoresData.liquidity_score,
               ]}
               labels={["Price", "Network", "Liquidity"]}
-              color={ratingColor(scoresData.risk_score)}
+              color={ratingColor(scoresData.overallRiskScore)}
             />
           </div>
         </div>
