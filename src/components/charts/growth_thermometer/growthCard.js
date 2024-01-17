@@ -4,12 +4,12 @@ It has since been streamlined for enhanced adaptability.
 Please modify its appearance and style as needed and incorporate it into your frontend.
 */
 
-import React from "react";
+import React, { useEffect } from "react";
 import ratingColor from "@/utils/ratingColor";
 import ThermometerGraph from "./thermometergraph";
 import Tagline from "@/components/tagline/tagline";
 
-const GrowthCard = ({ token, growth_score }) => {
+const GrowthCard = ({ token, growth_score, growthPageURL }) => {
   // Card style with responsive width and padding adjustments
   const cardStyle = {
     backgroundColor: "white",
@@ -53,19 +53,26 @@ const GrowthCard = ({ token, growth_score }) => {
     },
   };
 
-  return (
-    <div style={cardStyle}>
-      <div style={flexStyle}>
-        <div style={boxStyle}>
-          <div style={{ marginBottom: "5px" }}>
-            <h3>Growth</h3>
-          </div>
+  useEffect(() => {
+    // Call the API here
+  });
 
-          <div>
-            <div style={{ marginBottom: "20px" }}>
-              <div style={{ ...linkStyle, ...hoverStyle }}>
-                {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location */}
-                <a href={"#"}>
+  return (
+    <>
+      {/* The API provides a link for this purpose. Insert the relevant variable from the API at this location */}
+      <div
+        style={cardStyle}
+        onClick={() => (window.location.href = `${growthCardURL}/${token}`)}
+      >
+        <div style={flexStyle}>
+          <div style={boxStyle}>
+            <div style={{ marginBottom: "5px" }}>
+              <h3>Growth</h3>
+            </div>
+
+            <div>
+              <div style={{ marginBottom: "20px" }}>
+                <div style={{ ...linkStyle, ...hoverStyle }}>
                   <div
                     style={{
                       display: "flex",
@@ -78,7 +85,6 @@ const GrowthCard = ({ token, growth_score }) => {
                     {/* Replace with an appropriate arrow icon */}
                     <span
                       style={{
-                        marginTop: "5px",
                         fontSize: "0.8em",
                         color: ratingColor(growth_score),
                       }}
@@ -86,49 +92,53 @@ const GrowthCard = ({ token, growth_score }) => {
                       {growth_score}
                     </span>
                   </div>
-                </a>
+                </div>
               </div>
+
+              {/* Additional content goes here */}
             </div>
-
-            {/* Additional content goes here */}
           </div>
-        </div>
 
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
-          }}
-        >
           <div
             style={{
-              position: "absolute",
-              top: "5px",
-              right: "5px",
-              cursor: "pointer",
-              color: "blue.500",
-              ...hoverStyle,
-            }}
-            onClick={(event) => {
-              event.stopPropagation();
-              window.open(
-                "https://documentation.xerberus.io/xerberus-app/token-explorer/growth-thermometer",
-                "_blank"
-              );
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "relative",
             }}
           >
-            {/* Replace with an appropriate info icon */}
+            <div
+              style={{
+                position: "absolute",
+                top: "5px",
+                right: "5px",
+                cursor: "pointer",
+                color: "blue.500",
+                ...hoverStyle,
+              }}
+              onClick={(event) => {
+                event.stopPropagation();
+                window.open(
+                  "https://documentation.xerberus.io/xerberus-app/token-explorer/growth-thermometer",
+                  "_blank"
+                );
+              }}
+            >
+              {/* Replace with an appropriate info icon */}
+            </div>
+            {/* ThermometerGraph component */}
+            <ThermometerGraph data={growth_score} />
           </div>
-          {/* ThermometerGraph component */}
-          <ThermometerGraph data={growth_score} />
         </div>
+        <br />
+        <br />
+        <hr />
+        <br />
+
+        <Tagline />
       </div>
-      <br />
-      <Tagline/>
-    </div>
+    </>
   );
 };
 

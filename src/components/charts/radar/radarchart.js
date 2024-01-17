@@ -1,3 +1,9 @@
+/* 
+The component presented below was initially crafted with a range of tools and a UI library. 
+It has since been streamlined for enhanced adaptability. 
+Please modify its appearance and style as needed and incorporate it into your frontend.
+*/
+
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 

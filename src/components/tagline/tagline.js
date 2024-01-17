@@ -1,3 +1,5 @@
+// Mandatory Component that has to be shown
+
 import React from "react";
 
 const Tagline = () => {
@@ -42,7 +44,7 @@ const Tagline = () => {
           style={logoStyle}
           alt="Xerberus logo"
         />
-        <span style={taglineStyle}>Risk Ratings By Xerberus</span>
+        <span style={taglineStyle}>Risk Ratings By Xerberus.io</span>
       </div>
     </>
   );

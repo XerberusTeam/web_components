@@ -4,21 +4,21 @@ It has since been streamlined for enhanced adaptability.
 Please modify its appearance and style as needed and incorporate it into your frontend.
 */
 
-
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import ratingColor from "@/utils/ratingColor";
-import styles from '../../../styles/chart.module.css'
+import styles from "../../../styles/chart.module.css"
+import Tagline from "@/components/tagline/tagline";
 
 const customOrder = ["AAA", "AA", "A", "BBB", "BB", "B", "CCC", "CC", "C", "D"];
 
-const HistoryGraph = ({ details, ticks }) => {
+const HistoryGraph = ({ data, details, ticks }) => {
   const svgRef = useRef(null);
   const tooltipRef = useRef(null);
 
   useEffect(() => {
-    const color = colorMode === "dark" ? "#FFF" : "black";
-    const bg = colorMode === "dark" ? "#1A202C" : "white";
+    const color = "black";
+    const bg = "white";
 
     const svg = d3.select(svgRef.current);
     const margin = { top: 60, right: 30, bottom: 0, left: 60 };
@@ -33,7 +33,7 @@ const HistoryGraph = ({ details, ticks }) => {
       // X scale
       const x = d3
         .scaleBand()
-        .domain(filteredData.map((d) => d.date))
+        .domain(data.map((d) => d.date))
         .range([margin.left, width - margin.right])
         .padding(0.1);
 
@@ -64,7 +64,7 @@ const HistoryGraph = ({ details, ticks }) => {
       svg.selectAll("*").remove();
 
       // Calculate the step size for the x-axis labels
-      const stepSize = Math.max(1, Math.ceil(filteredData.length / ticks));
+      const stepSize = Math.max(1, Math.ceil(data.length / ticks));
 
       // Draw X and Y axes
       svg
@@ -75,7 +75,7 @@ const HistoryGraph = ({ details, ticks }) => {
           d3
             .axisBottom(x)
             .tickValues(
-              filteredData
+              data
                 .map((d, i) => (i % stepSize === 0 ? d.date : null))
                 .filter((d) => d !== null)
             )
@@ -103,7 +103,7 @@ const HistoryGraph = ({ details, ticks }) => {
       // Draw the step graph for "value" data
       svg
         .append("path")
-        .datum(filteredData)
+        .datum(data)
         .attr("fill", "none")
         .attr("class", "line") // Add class attribute for CSS styling
         .attr("stroke", color)
@@ -113,7 +113,7 @@ const HistoryGraph = ({ details, ticks }) => {
       // Draw the line with smoothened curve for "ma" data
       svg
         .append("path")
-        .datum(filteredData)
+        .datum(data)
         .attr("fill", "none")
         .attr("class", "line") // Add class attribute for CSS styling
         .attr("stroke", "red")
@@ -135,7 +135,7 @@ const HistoryGraph = ({ details, ticks }) => {
       // Draw dots at data points with custom colors and create overlay rectangles
       const dots = dotsGroup
         .selectAll(".dot")
-        .data(filteredData)
+        .data(data)
         .enter()
         .append("circle")
         .attr("class", "dot")
@@ -149,7 +149,7 @@ const HistoryGraph = ({ details, ticks }) => {
       // Update the overlay rectangle height and y position to cover the full vertical space
       dotsGroup
         .selectAll(".dot-overlay")
-        .data(filteredData)
+        .data(data)
         .enter()
         .append("rect")
         .attr("class", "dot-overlay")
@@ -223,7 +223,7 @@ const HistoryGraph = ({ details, ticks }) => {
       tooltipRef.current.remove();
       window.removeEventListener("resize", resizeListener);
     };
-  }, [colorMode, filteredData, details]);
+  }, [data, details]);
 
   return (
     <>
@@ -233,14 +233,14 @@ const HistoryGraph = ({ details, ticks }) => {
           <div className="info-box">
             <h1>
               {details.title}
-              <span className="badge" style={{ backgroundColor: ratingColor(details.rating) }}>
+              <span className="badge" style={{ backgroundColor: ratingColor(details.rating), marginLeft:'10px' }}>
                 {details.rating}
               </span>
             </h1>
-            <p>{details.description}</p>
+            <p style={{marginTop:'5px'}}>{details.description}</p>
           </div>
         )}
-        {details.name1 && (
+        {/* {details.name1 && (
           <div className="legend-box">
             <div className="legend-item">
               <span className={styles.whiteLine}></span>
@@ -253,8 +253,13 @@ const HistoryGraph = ({ details, ticks }) => {
               </div>
             )}
           </div>
-        )}
+        )} */}
       </div>
+      <br/>
+      <hr/>
+      <br/>
+      
+      <Tagline/>
     </>
   );
 
