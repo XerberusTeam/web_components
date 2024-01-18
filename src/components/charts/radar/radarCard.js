@@ -9,7 +9,7 @@ import ratingColor from "@/utils/ratingColor";
 import Tagline from "@/components/tagline/tagline";
 import RadarChart from "./radarchart";
 
-const RadarCard = ({ token, scoresData, radarCardURL }) => {
+const RadarCard = ({ token, scoresData, overallRiskScore, radarCardURL }) => {
   const cardStyle = {
     backgroundColor: "white",
     border: "1px solid black",
@@ -79,10 +79,10 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
                 <span
                   style={{
                     ...scoreTextStyle,
-                    color: ratingColor(scoresData.overallRiskScore),
+                    color: ratingColor(overallRiskScore),
                   }}
                 >
-                  {scoresData.overallRiskScore}
+                  {overallRiskScore}
                 </span>
               </h3>
             </div>
@@ -95,11 +95,11 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
                   style={{
                     ...riskScoreStyle,
                     color: ratingColor(
-                      scoresData[`${riskType.toLowerCase()}Score`]
+                      scoresData[index]
                     ),
                   }}
                 >
-                  {scoresData[`${riskType.toLowerCase()}Score`]}
+                  {scoresData[index]}
                 </span>
               </div>
             ))}
@@ -107,13 +107,9 @@ const RadarCard = ({ token, scoresData, radarCardURL }) => {
 
           <div style={radarStyle}>
             <RadarChart
-              rawData={[
-                scoresData.price_score,
-                scoresData.network_score,
-                scoresData.liquidity_score,
-              ]}
+              rawData={scoresData}
               labels={["Price", "Network", "Liquidity"]}
-              color={ratingColor(scoresData.overallRiskScore)}
+              color={ratingColor(overallRiskScore)}
             />
           </div>
         </div>

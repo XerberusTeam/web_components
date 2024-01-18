@@ -6,7 +6,6 @@ Please modify its appearance and style as needed and incorporate it into your fr
 
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
-import ratingColor from "@/utils/ratingColor";
 
 const convertData = (data) => {
   const conversionRule = {

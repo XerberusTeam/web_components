@@ -4,13 +4,11 @@ import HistoryCard from "@/components/charts/history/historyCard";
 import RadarCard from "@/components/charts/radar/radarCard";
 
 const Charts = ({token}) => {
+  
+  // Send data in the format - [Price, Network, Liquidity]
+  const sampleDataForRadarChart = ['AAA','A','AA'];
 
-  const sampleDataForRadarChart = {
-    overallRiskScore: "AAA",
-    liquidityScore: "AA",
-    networkScore: "A",
-    priceScore: "AAA",
-  };
+  const sampleOverAllRiskScore = 'AAA';
 
   const sampleDataForHistoryChart = {
     dataArray: [
@@ -60,7 +58,7 @@ const Charts = ({token}) => {
       {/* Replace the following sample data with actual data from the API when integrating into your application */}
       <GrowthCard token={"WMT"} growth_score={'High'} growthCardURL={''}/>
       <br />
-      <RadarCard token={"WMT"} scoresData={sampleDataForRadarChart} radarCardURL={''}/>
+      <RadarCard token={"WMT"} scoresData={sampleDataForRadarChart} overallRiskScore={sampleOverAllRiskScore} radarCardURL={''}/>
       <br />
       <HistoryCard
         token={"WMT"}
